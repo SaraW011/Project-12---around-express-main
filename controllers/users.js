@@ -6,7 +6,7 @@ const usersFilePath = path.join(__dirname, "..", "data", "users.json");
 const getUsers = async (req, res) => {
   try {
     const users = await readJsonFile(usersFilePath);
-    res.send(users);
+    res.status(200).send(users);
   } catch (err) {
     res.status(500).send({ message: "Server Error" });
   }
@@ -15,12 +15,12 @@ const getUsers = async (req, res) => {
 //find a user:
 const getUserById = async (req, res) => {
   try {
-    const users = readJsonFile(usersFilePath);
-    const user = await users.find((user) => user.id === req.params.user_id);
-    if (!user) {
+    const users = await readJsonFile(usersFilePath);
+    const id = users.find((user) => user.id === req.params._id);
+    if (!id) {
       res.status(404).send({ message: "User ID not found" });
     } else {
-      res.status(200).send(user);
+      res.status(200).send(users);
     }
   } catch (err) {
     res.status(500).send({ message: "Server Error" });
