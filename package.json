@@ -1,0 +1,23 @@
+{
+  "name": "project-12---around-express-main",
+  "description": "Practicum-100-Around-Express-Project",
+  "version": "1.0.0",
+  "main": "app.js",
+  "keywords": [],
+  "author": "Sara Weissman",
+  "license": "ISC",
+  "scripts": {
+    "lint": "npx eslint .",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  }
+}
