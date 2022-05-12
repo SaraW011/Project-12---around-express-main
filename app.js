@@ -1,6 +1,12 @@
 const express = require("express");
+
+const helmet = require("helmet");
+
 const app = express();
+
 const { PORT = 3000 } = process.env;
+
+app.use(helmet());
 
 const userRouter = require("./routes/users");
 const cardsRouter = require("./routes/cards");
@@ -8,7 +14,7 @@ const cardsRouter = require("./routes/cards");
 app.use(userRouter);
 app.use(cardsRouter);
 
-//Localhost 3000 message:
+// Localhost 3000 message:
 app.get("/", (req, res) => {
   res.send("You've been served!");
 });

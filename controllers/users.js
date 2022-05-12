@@ -1,5 +1,7 @@
-const { readJsonFile } = require("../helpers/fsModule");
 const path = require("path");
+
+const { readJsonFile } = require("../helpers/fsModule");
+
 const usersFilePath = path.join(__dirname, "..", "data", "users.json");
 
 // path to users.json:
@@ -12,7 +14,7 @@ const getUsers = async (req, res) => {
   }
 };
 
-//find a user:
+// find a user:
 const getUserById = async (req, res) => {
   try {
     const users = await readJsonFile(usersFilePath);
