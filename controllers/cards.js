@@ -1,5 +1,6 @@
-const { readJsonFile } = require("../helpers/fsModule");
 const path = require("path");
+const { readJsonFile } = require("../helpers/fsModule");
+
 const cardsFilePath = path.join(__dirname, "..", "data", "cards.json");
 
 // path to cards.json:

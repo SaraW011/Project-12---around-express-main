@@ -1,4 +1,4 @@
-const fs = require("fs"); //module
+const fs = require("fs"); // module
 
 // Use fsPromises.readFile() method
 // to asynchronously read the entire contents of a file:
