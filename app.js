@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 // Implementing a Temporary Authorization Solution by hardcoding:
 app.use((req, res, next) => {
   req.user = {
-    _id: "dbfe53c3c4d568240378b0c6" // paste the _id of the test user created in the previous step
+    _id: "62948a0e7e0fe1d83c2358cc" // paste the _id of the test user created in the previous step
   };
 
   next();

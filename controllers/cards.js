@@ -21,7 +21,7 @@ const getCards = (req, res) => {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, try again later` });
+      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
@@ -57,7 +57,7 @@ const deleteCard = (req, res) => {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, try again later` });
+      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
@@ -77,7 +77,7 @@ const likeCard = (req, res) => {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, try again later` });
+      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
@@ -97,7 +97,7 @@ const dislikeCard = (req, res) => {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, try again later` });
+      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 

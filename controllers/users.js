@@ -24,7 +24,7 @@ const getUsers = (req, res) => {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, try again later` });
+      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
@@ -83,7 +83,7 @@ const updateProfile = (req, res) => {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, try again later` });
+      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
@@ -105,7 +105,7 @@ const updateAvatar = (req, res) => {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, try again later` });
+      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
