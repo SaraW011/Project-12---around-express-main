@@ -1,22 +1,40 @@
 const express = require("express");
-
+const mongoose = require("mongoose");
+// get body in root request:
+const bodyParser = require("body-parser");
 const helmet = require("helmet");
 
 const app = express();
 
 const { PORT = 3000 } = process.env;
 
-app.use(helmet());
+// connect to the MongoDB server
+mongoose.connect("mongodb://localhost:27017/aroundb");
 
-const userRouter = require("./routes/users");
+app.use(helmet());
+// support parsing of application/json type post data:
+app.use(bodyParser.json());
+
 const cardsRouter = require("./routes/cards");
+const userRouter = require("./routes/users");
+// const clientErrorHandler = require("./errorHandler/validationErrorHandler");
 
 app.use(userRouter);
 app.use(cardsRouter);
+// app.use(clientErrorHandler);
 
 // Localhost 3000 message:
 app.get("/", (req, res) => {
   res.send("You've been served!");
+});
+
+// Implementing a Temporary Authorization Solution by hardcoding:
+app.use((req, res, next) => {
+  req.user = {
+    _id: "dbfe53c3c4d568240378b0c6" // paste the _id of the test user created in the previous step
+  };
+
+  next();
 });
 
 // Non-existent address:
