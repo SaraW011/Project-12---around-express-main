@@ -56,8 +56,11 @@ const deleteCard = (req, res) => {
       if (err.name === "CastError") {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
+      } if (err.name === "DocumentNotFoundError") {
+        res.status(NOTFOUND_ERROR_CODE).send({ message: "User not found" });
+      } else {
+        res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
@@ -76,8 +79,11 @@ const likeCard = (req, res) => {
       if (err.name === "CastError") {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
+      } if (err.name === "DocumentNotFoundError") {
+        res.status(NOTFOUND_ERROR_CODE).send({ message: "User not found" });
+      } else {
+        res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 
@@ -96,8 +102,11 @@ const dislikeCard = (req, res) => {
       if (err.name === "CastError") {
         res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
         return;
+      } if (err.name === "DocumentNotFoundError") {
+        res.status(NOTFOUND_ERROR_CODE).send({ message: "User not found" });
+      } else {
+        res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
       }
-      res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
     });
 };
 

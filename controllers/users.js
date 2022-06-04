@@ -30,16 +30,16 @@ const getUsers = (req, res) => {
 
 // find user by ID:
 const getUserById = (req, res) => {
-  User.findById(req.params.id)
+  User.findById(req.params.userid) // same id variables as router
     .then((user) => {
       res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === "CastError") {
-        res.status(NOTFOUND_ERROR_CODE).send({ message: `${err.message}, could not find data` });
+        res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, invalid data` });
       }
-      if (err.name === "ValidationError") { // mongoose public class ValidationError
-        res.status(INVALID_DATA_ERROR_CODE).send({ messege: `${err.message}, incorrect data` });
+      if (err.name === "DocumentNotFoundError") { // mongoose public class ValidationError
+        res.status(NOTFOUND_ERROR_CODE).send({ messege: `${err.message}, could not find user` });
         return;
       }
       res.status(SERVER_ERROR_CODE).send({ messege: `${err.message}` });
@@ -56,8 +56,7 @@ const createUser = (req, res) => {
     .catch((err) => {
       if (err.name === "CastError") {
         res.status(NOTFOUND_ERROR_CODE).send({ message: `${err.message}, could not find data` });
-      }
-      if (err.name === "ValidationError") { // mongoose public class ValidationError
+      } else if (err.name === "ValidationError") { // mongoose public class ValidationError
         res.status(INVALID_DATA_ERROR_CODE).send({ messege: `${err.message}, incorrect data` });
         return;
       }
@@ -80,7 +79,9 @@ const updateProfile = (req, res) => {
     })
     .catch((err) => {
       if (err.name === "CastError") {
-        res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
+        res.status(NOTFOUND_ERROR_CODE).send({ message: `${err.message}, could not find data` });
+      } else if (err.name === "ValidationError") {
+        res.status(INVALID_DATA_ERROR_CODE).send({ messege: `${err.message}, incorrect data` });
         return;
       }
       res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });
@@ -102,7 +103,9 @@ const updateAvatar = (req, res) => {
     })
     .catch((err) => {
       if (err.name === "CastError") {
-        res.status(INVALID_DATA_ERROR_CODE).send({ message: `${err.message}, incorrect data` });
+        res.status(NOTFOUND_ERROR_CODE).send({ message: `${err.message}, could not find data` });
+      } else if (err.name === "ValidationError") {
+        res.status(INVALID_DATA_ERROR_CODE).send({ messege: `${err.message}, incorrect data` });
         return;
       }
       res.status(SERVER_ERROR_CODE).send({ message: `${err.message}, no connection, try again later` });

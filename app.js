@@ -8,7 +8,7 @@ const app = express();
 
 const { PORT = 3000 } = process.env;
 
-// connect to the MongoDB server
+// connect to MongoDB server
 mongoose.connect("mongodb://localhost:27017/aroundb");
 
 app.use(helmet());
