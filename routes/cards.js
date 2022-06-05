@@ -15,7 +15,7 @@ cardsRouter.get("/", getCards);
 cardsRouter.post("/", createCard);
 
 // deletes a card by _id
-cardsRouter.delete("/:cardId", deleteCard);
+cardsRouter.delete("/:cardId", deleteCard); // need same value as in controller
 
 // like a card
 cardsRouter.put("/:cardId/likes", likeCard);

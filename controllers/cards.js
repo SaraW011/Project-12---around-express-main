@@ -46,7 +46,7 @@ const createCard = (req, res) => {
 
 // delete owner card:
 const deleteCard = (req, res) => {
-  const cardId = req.params.card_id;
+  const { cardId } = req.params.cardId; // need same value as in cardsRouter
   Card.deleteOne(cardId)
     .orFail(apiValidationError)
     .then(() => {
